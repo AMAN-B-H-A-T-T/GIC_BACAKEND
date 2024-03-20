@@ -17,6 +17,7 @@ try{
     app.use(bodyParser.json())
     //setup the cors 
     app.use(cors())
+    app.use("/api/manage",require('./routes/profile.route'))
     connect_db()
 }
 catch(error){
