@@ -11,7 +11,8 @@ const generate_token = (model)=>{
 }
 const verify_token = (token)=>{
     try{
-
+        const decoded_data = jwt.verify(token,process.env.SECRET_KEY)
+        return {error:false,data:decoded_data}
     }
     catch(error){
         return {error:true,message:error.message}
