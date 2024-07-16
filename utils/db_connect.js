@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Pool = require('pg').Pool
 require('dotenv').config()
 
 
@@ -14,6 +15,24 @@ const connect_db = ()=>{
     })
 }
 
+const postgreSQL = ()=>{
+    try{
+        const pool = new Pool({
+            user: 'me',
+            host: 'localhost',
+            database: 'api',
+            password: 'password',
+            port: 5432,
+          })
+          console.log("postgreSQL connection successfull")
+          return pool
+    }
+    catch(error){
+        console.log(error.message)
+    }    
+}
+
 module.exports = {
-    connect_db
+    connect_db,
+    postgreSQL
 }

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 const generate_token = (model)=>{
     try{
-        const token = jwt.sign(model,process.env.SECRET_KEY,{expiresIn:'1d'})
+        const token = jwt.sign(model,process.env.SECRET_KEY,{expiresIn:'30d'})
         return {error:false,data:token}
     }
     catch(error){

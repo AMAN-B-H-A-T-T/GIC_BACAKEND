@@ -11,7 +11,7 @@ route.use((err,req,res,next)=>{
     if(err instanceof ValidationError){
         return res.status(err.statusCode).json(err.details.body[0].message)
     }
-    return res.status(500).json(err)
+    return res.status(500).json(err,message)
 })
 
 module.exports = route

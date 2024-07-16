@@ -16,10 +16,9 @@ const create_profile_controller = async (req, res) => {
         const model = {
             user_name: req.body.user_name,
             user_email: req.body.user_email,
-            user_phone: req.body.user_phone,
-            user_region: req.body.user_region,
+            user_contact: req.body.user_contact,
             user_password: await generate_hashed_password(req.body.user_password),
-            user_role: req.body.user_role
+            is_session_active: req.body.is_session_active
         }
         create_profile(model, (error, result) => {
             if (error) {

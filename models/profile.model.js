@@ -1,31 +1,39 @@
 const mongoose = require('mongoose')
-
-const Profile = mongoose.model("Profile",mongoose.Schema({
+const sequelize = require('../utils/postgreSQL_conn')
+const { DataTypes } = require('sequelize')
+const {v4: uuidv4} = require('uuid')
+const User = sequelize.define("User",{
+    slug : {
+        type: DataTypes.UUID,
+        defaultValue: uuidv4,
+        primaryKey: true,
+    },
     user_name : {
-        type:String,
-        required: true,
+        type:DataTypes.STRING,
+        allowNull:false
     },
     user_email: {
-        type: String,
-        required:true,
-        unique: true
+        type:DataTypes.STRING,
+        allowNull:false,
+        unique : true
     },
-    user_phone: {
-        type: String,
-        required:true
+    user_contact: {
+        type:DataTypes.STRING,
+        allowNull:false
     },
     user_password:{
-        type:String,
-        required:true
+        type:DataTypes.STRING,
+        allowNull:false
     },
-    user_region: {
-        type: String,
-        requried: true,
+    session_id: {
+        type:DataTypes.STRING,
+        allowNull:true
     },
-    user_role: {
-        type:String,
-        required:true
+    is_session_active : {
+        type:DataTypes.STRING,
+        allowNull:false,
+        defaultValue : false
     }
-}))
+})
 
-module.exports = Profile
+module.exports = User
