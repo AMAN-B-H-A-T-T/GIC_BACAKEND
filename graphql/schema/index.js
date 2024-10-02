@@ -41,6 +41,7 @@ module.exports = buildSchema(`
         about: String!
         attachment: String!
         date: Date!
+        url: String!
     }
 
     type Report {
@@ -49,6 +50,7 @@ module.exports = buildSchema(`
         about: String!
         attechment: String!
         date: Date!
+        url: String!
     }
 
     type Inquire {
@@ -160,6 +162,8 @@ module.exports = buildSchema(`
         incubations: [Incubation]!
         reachouts: [Reachout!]!
         circulars: [Circular!]!
+        Reports: [Report!]!
+        
     }
     type RootMutation{
         welcome: String!
